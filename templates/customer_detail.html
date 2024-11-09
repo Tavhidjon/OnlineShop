@@ -1,0 +1,19 @@
+{% extends 'base_generic.html' %}
+
+{% block title %}Customer Details | Online Shop{% endblock %}
+
+{% block content %}
+    <div class="card">
+        <div class="card-header">
+            <h3>{{ customer.username }}</h3>
+        </div>
+        <div class="card-body">
+            <p><strong>Name:</strong> {{ customer.first_name }} {{ customer.last_name }}</p>
+            <p><strong>Email:</strong> {{ customer.email }}</p>
+            <p><strong>Phone:</strong> {{ customer.phone_number }}</p>
+            <p><strong>Address:</strong> {{ customer.address }}</p>
+            <a href="{% url 'customer_update' customer.pk %}" class="btn btn-warning mt-3">Edit Customer</a>
+            <a href="{% url 'customer_delete' customer.pk %}" class="btn btn-danger mt-3">Delete Customer</a>
+        </div>
+    </div>
+{% endblock %}

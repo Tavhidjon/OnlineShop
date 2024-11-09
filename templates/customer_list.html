@@ -1,0 +1,24 @@
+{% extends 'base_generic.html' %}
+
+{% block title %}Customers | Online Shop{% endblock %}
+
+{% block content %}
+    <h1 class="mb-4">Customers</h1>
+    <a href="{% url 'customer_create' %}" class="btn btn-primary mb-3">Create New Customer</a>
+    <div class="row">
+        {% for customer in customers %}
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">{{ customer.username }}</h5>
+                    <p class="card-text">{{ customer.first_name }} {{ customer.last_name }}</p>
+                    <p class="card-text">{{ customer.email }}</p>
+                    <a href="{% url 'customer_detail' customer.pk %}" class="btn btn-info">View Details</a>
+                    <a href="{% url 'customer_update' customer.pk %}" class="btn btn-warning">Edit</a>
+                    <a href="{% url 'customer_delete' customer.pk %}" class="btn btn-danger">Delete</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'base_generic.html' %}
+
+{% block title %}Create Order | Online Shop{% endblock %}
+
+{% block content %}
+    <h1>Create a New Order</h1>
+    <form method="post">
+        {% csrf_token %}
+        {% for field in form %}
+            <div class="mb-3">
+                <label class="form-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+                {{ field }}
+                {% if field.help_text %}
+                    <div class="form-text">{{ field.help_text }}</div>
+                {% endif %}
+            </div>
+        {% endfor %}
+        <button type="submit" class="btn btn-primary">Create Order</button>
+    </form>
+{% endblock %}
+
+
+
